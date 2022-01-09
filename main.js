@@ -1,40 +1,40 @@
-//1 
+//1
 //ii
 let div = document.getElementById('black');
 let btn = document.querySelector('.btn_2');
-    
+
 btn.addEventListener('click',function(){
     div.remove()
-})
+});
 
 //iii
 let button = document.querySelector('.btn_3');
 button.addEventListener('click',function(){
     div.classList.add('hidden')
-})
+});
 
 
 //2
 let block = document.querySelector('.block');
-let btn_2 = document.querySelector('.btn2');
+let btn2 = document.querySelector('.btn2');
 
-btn_2.addEventListener('click',function(){
+btn2.addEventListener('click',function(){
     block.classList.toggle('hidden')
-})
+});
 
 //3
 let blocks = document.querySelectorAll('.block3');
-let btn3 = document.querySelector('.btn3')
+let btn3 = document.querySelector('.btn3');
 
 btn3.addEventListener('click',function(){
     blocks.forEach(function(block){
         block.classList.toggle('hidden')
-    })
-})
+    });
+});
 
 //4
 
-let btn4 = document.querySelector('.btn4')
+let btn4 = document.querySelector('.btn4');
 
 btn4.addEventListener('click',function(){
     let selector = document.querySelector('.input_selector').value;
@@ -42,9 +42,9 @@ btn4.addEventListener('click',function(){
 });
 
 //5
-let yellow_div = document.querySelector('.yellow_div');
+let yellowDiv = document.querySelector('.yellow_div');
 
-yellow_div.addEventListener('click',func);
+yellowDiv.addEventListener('click',func);
 
  function func(){
     alert('Привет')
@@ -55,30 +55,30 @@ yellow_div.addEventListener('click',func);
 }
 
 //6
-let red_div = document.querySelector('.red_div');
+let redDiv = document.querySelector('.red_div');
 let btn6 = document.querySelector('.btn6');
 
 btn6.addEventListener('mouseover',mouse);
 
 function mouse(){
-    red_div.classList.remove('hide');
-    red_div.removeEventListener('mouseover',mouse)
+    redDiv.classList.remove('hide');
+    redDiv.removeEventListener('mouseover',mouse)
     btn6.addEventListener('mouseout',function(){
-        red_div.classList.add('hide')
+        redDiv.classList.add('hide')
     })
 }
 
 //7
 let input = document.querySelector('.input7');
-let green_div = document.querySelector('.green_div');
+let greenDiv = document.querySelector('.green_div');
 
 input.addEventListener('focus',hideinput);
 
 function hideinput(){
-    green_div.classList.remove('hidden');
-    green_div.removeEventListener('focus',hideinput);
+    greenDiv.classList.remove('hidden');
+    greenDiv.removeEventListener('focus',hideinput);
     input.addEventListener('input',function(){
-        green_div.classList.add('hidden')
+        greenDiv.classList.add('hidden')
     });
 }
 
@@ -87,15 +87,14 @@ let btn8 = document.querySelector('.btn8');
 let img = document.querySelector('.img_8');
 btn8.addEventListener('click',function(){
     img.classList.remove('hidden');
-    let input_img = document.querySelector('.input8').value;
-    img.src = input_img 
-})
+    let inputImg = document.querySelector('.input8').value;
+    img.src = inputImg
+});
 
 //9
 
 let btn9 = document.querySelector('.btn99');
-let images = document.querySelector('.images')
-
+let images = document.querySelector('.images');
 
 btn9.addEventListener('click',function(){
     let textareaValues = document.getElementById('textarea1').value.split(/\n/);
@@ -107,12 +106,11 @@ btn9.addEventListener('click',function(){
         img.src = textareaValues[i];
         images.appendChild(img);
     }
-})
+});
 
 // 10
-document.body.onmousemove = 
+document.body.onmousemove =
 function(event){
-    // console.log(event)
     document.querySelector('.x').innerHTML = event.offsetX;
     document.querySelector('.y').innerHTML = event.offsetY
 }
@@ -138,16 +136,16 @@ const cookiesDiv = document.querySelector('.cookies')
 
 localStorageD.addEventListener('DOMSubtreeModified', function(){
     localStorage.setItem('local',localStorageD.innerHTML )
-})
+});
 
 sessionStorageD.addEventListener('DOMSubtreeModified',function(){
     sessionStorage.setItem('session', sessionStorageD.innerHTML)
-})
+});
 window.addEventListener('load',function(){
     localStorageD.innerHTML = localStorage.getItem('local');
     sessionStorageD.innerHTML = sessionStorage.getItem('session');
     cookiesDiv.innerHTML = document.cookie
-})
+});
 
 
 //14
@@ -160,20 +158,20 @@ $(window).scroll(function(){
     } else{
         btn14.addClass('hidden')
     }
-})
+});
 
 btn14.on('click',function(event){
     $('html, body').animate({
         scrollTop: 0
-    })
-})
+    });
+});
 //15
 let firstdiv = document.querySelector('.first');
 let secondDiv = document.querySelector('.second');
 
 firstdiv.addEventListener('click',function(){
     alert('hi')
-})
+});
 
 secondDiv.addEventListener('click',second);
 
@@ -224,13 +222,13 @@ inputFile.addEventListener('drop',function(){
 
 // csv
 let csvText  = document.getElementById('csvText');
-let result_btn = document.querySelector('.result');
+let resultBtn = document.querySelector('.result');
 let text = document.querySelector('#text');
 let resultDiv = document.querySelector('#results');
 
 function ParseCsv(){
     let csValue = csvText.value;
-    let csvArr = csValue.split('\n')
+    let csvArr = csValue.split('\n');
     let csvFilter = csvArr.filter(item => !item.includes('#') && !item.includes('  '));
     let maps = csvFilter.map(function(elem){
         let lineForMap = elem.split(',');
@@ -241,7 +239,7 @@ function ParseCsv(){
             population: lineForMap[3]
         }
         return map
-    })
+    });
     let SortMap = maps.sort((a , b) => b.population -  a.population);
     let tenCities = SortMap.slice(0,10);
     let finalObj = tenCities.reduce((a,c,i) =>{
@@ -252,14 +250,14 @@ function ParseCsv(){
         return a
     },{})
     console.log(finalObj)
- 
+
     return finalObj
 }
 
-result_btn.addEventListener('click',function(){
+resultBtn.addEventListener('click',function(){
    let cont = text.value;
-   let afterParse =  ParseCsv()
-   resultDiv.innerHTML = `${cont} - немає у рейтингу`
-   let lineForRes = `${cont}-${afterParse[cont].raiting} місце у Топ 10 міст України з населенням ${afterParse[cont].population }`
-   resultDiv.innerHTML = lineForRes
-})
+   let afterParse =  ParseCsv();
+   resultDiv.innerHTML = `${cont} - немає у рейтингу`;
+   let lineForRes = `${cont}-${afterParse[cont].raiting} місце у Топ 10 міст України з населенням ${afterParse[cont].population}`;
+   resultDiv.innerHTML = lineForRes;
+});
